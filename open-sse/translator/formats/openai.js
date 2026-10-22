@@ -12,8 +12,8 @@ export function filterToOpenAIFormat(body, opts = {}) {
   const keepCache = !!opts.preserveCacheControl;
 
   function stripBlock(block) {
-    const { signature, cache_control, ...rest } = block;
-    return keepCache && cache_control ? { ...rest, cache_control } : rest;
+    const { signature, cache_control: cacheControl, ...rest } = block;
+    return keepCache && cacheControl ? { ...rest, cache_control: cacheControl } : rest;
   }
 
   body.messages = body.messages.map(msg => {

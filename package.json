@@ -14,7 +14,10 @@
     "build:bun": "bun --bun next build --webpack",
     "start:bun": "bun ./.next/standalone/custom-server.js",
     "cli:pack": "npm --prefix cli run pack:cli",
-    "cli:publish": "npm --prefix cli run publish:cli"
+    "cli:publish": "npm --prefix cli run publish:cli",
+    "lint:naming": "eslint --config eslint.naming.config.mjs --quiet --pass-on-unpruned-suppressions .",
+    "lint:complexity": "eslint --config eslint.complexity.config.mjs --quiet .",
+    "lint:complexity:update": "eslint --config eslint.complexity.config.mjs --quiet --suppress-rule complexity . && eslint --config eslint.complexity.config.mjs --quiet --prune-suppressions ."
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

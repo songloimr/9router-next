@@ -21,7 +21,8 @@ Provider-agnostic SSE engine: one OpenAI-style request → any provider (LLM cha
 
 ## Conventions
 
-- Config-driven, DRY, camelCase. NEVER hardcode values, models, or block/role strings — use `config/` + `schema/` constants.
+- Config-driven and DRY. NEVER hardcode values, models, or block/role strings — use `config/` + `schema/` constants.
+- Naming: camelCase variables/functions/parameters, PascalCase classes, UPPER_SNAKE_CASE constants. Upstream wire keys (`response_format`, `tool_calls`) keep their spelling and are aliased to camelCase locals. Enforced repo-wide by `npm run lint:naming`; see `../AGENTS.md`.
 - Translator pipeline pivots through OpenAI as the intermediate format. A translator registered on the exact `source:target` pair (e.g. `claude:kiro`) runs as a **direct route**, skipping the lossy double-hop.
 - Translators self-register via `register(from, to, reqFn, resFn)` as an import side-effect — new files MUST be imported in `translator/index.js`.
 

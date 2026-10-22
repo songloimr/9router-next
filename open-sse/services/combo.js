@@ -26,8 +26,8 @@ function flattenToolHistory(messages) {
         return { role: "assistant", content: `${TOOL_RESULT_PREFIX}${extractTextContent(msg.content) || String(msg.content ?? "")}]` };
       }
       if (msg.role === "assistant" && Array.isArray(msg.tool_calls)) {
-        const { tool_calls, ...rest } = msg;
-        const names = tool_calls.map((c) => c?.function?.name || c?.name || "tool").join(", ");
+        const { tool_calls: toolCalls, ...rest } = msg;
+        const names = toolCalls.map((c) => c?.function?.name || c?.name || "tool").join(", ");
         const base = extractTextContent(rest.content) || (typeof rest.content === "string" ? rest.content : "");
         return { ...rest, content: `${base}${base ? "\n" : ""}${TOOL_CALL_PREFIX}${names}]` };
       }

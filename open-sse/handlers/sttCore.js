@@ -65,12 +65,12 @@ async function transcribeAssemblyAI(cfg, file, model, token) {
     method: "POST", headers: { ...auth, "Content-Type": "application/octet-stream" }, body: buf,
   });
   if (!up.ok) return upstreamError(up);
-  const { upload_url } = await up.json();
+  const { upload_url: uploadUrl } = await up.json();
 
   const sub = await fetch(cfg.baseUrl, {
     method: "POST",
     headers: { ...auth, "Content-Type": "application/json" },
-    body: JSON.stringify({ audio_url: upload_url, speech_models: [model], language_detection: true }),
+    body: JSON.stringify({ audio_url: uploadUrl, speech_models: [model], language_detection: true }),
   });
   if (!sub.ok) return upstreamError(sub);
   const { id } = await sub.json();

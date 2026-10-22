@@ -104,8 +104,8 @@ describe("stripUnsupportedParams", () => {
     ];
 
     for (const model of ["deepseek-v4.1-flash", "deepseek-flash", "deepseek-v4-flash", "deepseek-v4-flash-vision-exp", "deepseek-v4-pro"]) {
-      for (const response_format of formats) {
-        const body = { messages: [{ role: "user", content: "hi" }], response_format };
+      for (const responseFormat of formats) {
+        const body = { messages: [{ role: "user", content: "hi" }], response_format: responseFormat };
         stripUnsupportedParams("opencode-go", model, body);
         expect(body.response_format).toBeUndefined();
         expect(body.messages).toEqual([{ role: "user", content: "hi" }]);
@@ -114,26 +114,26 @@ describe("stripUnsupportedParams", () => {
   });
 
   it("keeps response_format for OpenCode Go models that serve it", () => {
-    const response_format = { type: "json_schema", json_schema: { name: "t", schema: { type: "object" } } };
+    const responseFormat = { type: "json_schema", json_schema: { name: "t", schema: { type: "object" } } };
 
     for (const model of ["glm-5.3-flash", "glm-5.3", "kimi-k3", "mimo-v2.6-flash", "minimax-m3", "qwen3.8-flash", "grok-4.7", "muse-spark-1.3-contributor"]) {
-      const body = { messages: [{ role: "user", content: "hi" }], response_format };
+      const body = { messages: [{ role: "user", content: "hi" }], response_format: responseFormat };
       stripUnsupportedParams("opencode-go", model, body);
-      expect(body.response_format).toBe(response_format);
+      expect(body.response_format).toBe(responseFormat);
     }
   });
 
   it("leaves response_format alone for other providers fronting deepseek ids", () => {
-    const response_format = { type: "json_schema", json_schema: { name: "t", schema: { type: "object" } } };
+    const responseFormat = { type: "json_schema", json_schema: { name: "t", schema: { type: "object" } } };
 
     for (const [provider, model] of [
       ["deepseek", "deepseek-reasoner"],
       ["opencode-zen", "deepseek-v4.1-flash"],
       ["openrouter", "deepseek/deepseek-v3.2"],
     ]) {
-      const body = { messages: [{ role: "user", content: "hi" }], response_format };
+      const body = { messages: [{ role: "user", content: "hi" }], response_format: responseFormat };
       stripUnsupportedParams(provider, model, body);
-      expect(body.response_format).toBe(response_format);
+      expect(body.response_format).toBe(responseFormat);
     }
   });
 });

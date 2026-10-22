@@ -552,7 +552,7 @@ async function convertOpenAIResponseToGemini(response, model) {
     });
   }
 
-  const { message, finish_reason } = choice;
+  const { message, finish_reason: finishReasonRaw } = choice;
 
   const parts = [];
   if (message.reasoning_content) {
@@ -560,7 +560,7 @@ async function convertOpenAIResponseToGemini(response, model) {
   }
   parts.push({ text: message.content || "" });
 
-  const finishReason = FINISH_REASON_MAP[finish_reason] || "STOP";
+  const finishReason = FINISH_REASON_MAP[finishReasonRaw] || "STOP";
 
   const geminiResponse = {
     candidates: [

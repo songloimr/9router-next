@@ -10,18 +10,18 @@ import { clampResponsesCallId, coerceResponsesOutput, MAX_RESPONSES_CALL_ID_LEN 
 import { initState, translateResponse } from "../../open-sse/translator/index.js";
 import { FORMATS } from "../../open-sse/translator/formats.js";
 
-const added = (id, call_id, name, type = "function_call") => ({
+const added = (id, callId, name, type = "function_call") => ({
   type: "response.output_item.added",
-  item: { id, type, call_id, name, arguments: "" },
+  item: { id, type, call_id: callId, name, arguments: "" },
 });
-const delta = (item_id, text) => ({
+const delta = (itemId, text) => ({
   type: "response.function_call_arguments.delta",
-  item_id,
+  item_id: itemId,
   delta: text,
 });
-const done = (id, call_id, name) => ({
+const done = (id, callId, name) => ({
   type: "response.output_item.done",
-  item: { id, type: "function_call", call_id, name },
+  item: { id, type: "function_call", call_id: callId, name },
 });
 
 // Reassemble translated chunks the way an OpenAI client accumulator does.

@@ -84,6 +84,8 @@ graphify-out/*
 .repo/
 .script/
 .codegraph/
+# codebase-memory portable snapshot (local generated graph, do not commit)
+.codebase-memory/
 .PR/
 .next-analyze/*
 

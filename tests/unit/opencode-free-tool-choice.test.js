@@ -18,9 +18,9 @@ const TOOLS = [{ type: "function", name: "get_weather", description: "w", parame
 // read/shell definitions are appended or upstream answers 403 FreeTierError.
 const WIRE_TOOLS = [...TOOLS, ...OPENCODE_FINGERPRINT_TOOLS.map((name) => expect.objectContaining({ type: "function", name }))];
 
-function responsesBody(model, tool_choice) {
+function responsesBody(model, toolChoice) {
   const body = { model, input: structuredClone(INPUT), tools: structuredClone(TOOLS) };
-  if (tool_choice !== undefined) body.tool_choice = tool_choice;
+  if (toolChoice !== undefined) body.tool_choice = toolChoice;
   return body;
 }
 

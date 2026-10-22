@@ -48,7 +48,7 @@ export async function GET(request) {
 
     // Use provider alias for /v1/audio/speech model param (matches skill convention e.g. el/, dg/, edge-tts/)
     const alias = AI_PROVIDERS[provider]?.alias || provider;
-    const data_out = rawVoices.map((v) => ({
+    const dataOut = rawVoices.map((v) => ({
       id: v.id,
       name: v.name,
       lang: v.lang || "",
@@ -56,7 +56,7 @@ export async function GET(request) {
       model: `${alias}/${v.id}`,
     }));
 
-    return Response.json({ object: "list", data: data_out }, {
+    return Response.json({ object: "list", data: dataOut }, {
       headers: { "Access-Control-Allow-Origin": "*" },
     });
   } catch (err) {

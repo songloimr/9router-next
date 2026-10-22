@@ -117,13 +117,13 @@ export async function refreshVertexToken(saJson, log) {
       return null;
     }
 
-    const { access_token, expires_in } = await res.json();
-    const expiresAt = Date.now() + (expires_in ?? 3600) * 1000;
+    const { access_token: accessToken, expires_in: expiresIn } = await res.json();
+    const expiresAt = Date.now() + (expiresIn ?? 3600) * 1000;
 
-    vertexTokenCache.set(cacheKey, { token: access_token, expiresAt });
+    vertexTokenCache.set(cacheKey, { token: accessToken, expiresAt });
     log?.info?.("TOKEN_REFRESH", `Vertex token minted for ${saJson.client_email}`);
 
-    return { accessToken: access_token, expiresAt };
+    return { accessToken, expiresAt };
   } catch (error) {
     log?.error?.("TOKEN_REFRESH", `Vertex token error: ${error.message}`);
     return null;

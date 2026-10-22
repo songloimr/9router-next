@@ -23,7 +23,7 @@ npm run build && PORT=20128 HOSTNAME=0.0.0.0 npm run start           # productio
 ```
 - Bun variants: `npm run dev:bun` / `build:bun` / `start:bun`.
 - Default runtime port is **20128** (dashboard at `/dashboard`, API at `/v1`).
-- Lint: `npx eslint .` (config `eslint.config.mjs`, extends `eslint-config-next`).
+- Lint: `npx eslint .` (config `eslint.config.mjs`, extends `eslint-config-next`). Naming-only check: `npm run lint:naming`. Complexity-only check (max 20 branches, legacy debt baselined in `eslint-suppressions.json`): `npm run lint:complexity`.
 
 CLI package (`cli/`):
 ```bash
@@ -85,6 +85,7 @@ Pre-translate hooks that compress `tool_result` content in-place to cut tokens. 
 ## Conventions & gotchas
 
 - Plain JavaScript (ESM), no TypeScript. `@/*` path alias → `src/*` (`jsconfig.json`).
+- Naming: `camelCase` for variables/functions/parameters, `PascalCase` for classes/React components, `UPPER_SNAKE_CASE` for module constants. Keep upstream wire keys (`response_format`, `tool_calls`) and alias them to camelCase locals. ESLint enforces this repo-wide; see `AGENTS.md` and run `npm run lint:naming`.
 - `custom-server.js` wraps the Next standalone server to derive client IP from the TCP socket and strip attacker-controlled `X-Forwarded-For` — trusting forwarding headers only from a loopback reverse proxy. Preserve this when touching request/IP/rate-limit code.
 - Security-sensitive env: `JWT_SECRET` (session cookie), `INITIAL_PASSWORD` (default `123456` — must override), `API_KEY_SECRET`, `MACHINE_ID_SALT`. Full env contract in `.env.example` and ARCHITECTURE.md's env matrix.
 - Binary/protobuf upstreams (kiro EventStream, cursor protobuf, commandcode NDJSON) don't round-trip through OpenAI — they're handled inside their own executor, not the translator.

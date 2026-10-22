@@ -16,7 +16,7 @@ const COLORS = {
 const DEFAULT_PASSWORD = "123456";
 
 /**
- * Show settings menu (tunnel + RTK + reset password)
+ * Show settings menu (tunnel + reset password)
  * @param {Array<string>} breadcrumb - Breadcrumb path
  */
 async function showSettingsMenu(breadcrumb = []) {

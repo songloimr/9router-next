@@ -588,14 +588,14 @@ async function handleAddDeviceCodeConnection(providerId) {
   }
   
   const deviceData = deviceResult.data || deviceResult;
-  const device_code = deviceData.device_code;
-  const user_code = deviceData.user_code;
-  const verification_uri = deviceData.verification_uri;
-  const verification_uri_complete = deviceData.verification_uri_complete;
+  const deviceCode = deviceData.device_code;
+  const userCode = deviceData.user_code;
+  const verificationUri = deviceData.verification_uri;
+  const verificationUriComplete = deviceData.verification_uri_complete;
   const codeVerifier = deviceData.codeVerifier;
   const extraData = deviceData.extraData || deviceData;
   
-  if (!device_code) {
+  if (!deviceCode) {
     showStatus("Failed: No device code received", "error");
     await pause();
     return;
@@ -603,7 +603,7 @@ async function handleAddDeviceCodeConnection(providerId) {
   
   // Step 2: Show instructions
   clearScreen();
-  const deviceUrl = verification_uri_complete || verification_uri;
+  const deviceUrl = verificationUriComplete || verificationUri;
   showHeader("📱 Device Login", `Providers > ${provider.name} > Add Connection`);
   
   console.log(`  ${COLORS.bold}${COLORS.cyan}1.${COLORS.reset} Open: ${COLORS.dim}${deviceUrl}${COLORS.reset}`);
@@ -611,8 +611,8 @@ async function handleAddDeviceCodeConnection(providerId) {
     console.log(`     \x1b[32m✓ Link copied to clipboard!\x1b[0m`);
   }
   console.log();
-  if (!verification_uri_complete && user_code) {
-    console.log(`  ${COLORS.bold}${COLORS.cyan}2.${COLORS.reset} Enter code: ${COLORS.bold}${user_code}${COLORS.reset}`);
+  if (!verificationUriComplete && userCode) {
+    console.log(`  ${COLORS.bold}${COLORS.cyan}2.${COLORS.reset} Enter code: ${COLORS.bold}${userCode}${COLORS.reset}`);
     console.log();
   }
   console.log(`  ${COLORS.dim}Waiting for authorization...${COLORS.reset}`);
@@ -624,7 +624,7 @@ async function handleAddDeviceCodeConnection(providerId) {
     await new Promise(resolve => setTimeout(resolve, 5000));
     
     const pollResult = await api.pollOAuthToken(providerId, {
-      deviceCode: device_code,
+      deviceCode,
       codeVerifier,
       extraData
     });

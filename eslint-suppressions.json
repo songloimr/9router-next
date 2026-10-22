@@ -1,0 +1,1187 @@
+{
+  "cli/src/cli/commands/connect.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "cli/src/cli/commands/xaiVideo.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "cli/src/cli/utils/modelSelector.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/executors/antigravity.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/executors/base.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/executors/bedrock.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/executors/codex.js": {
+    "complexity": {
+      "count": 3
+    }
+  },
+  "open-sse/executors/commandcode.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/executors/cursor.js": {
+    "complexity": {
+      "count": 5
+    }
+  },
+  "open-sse/executors/default.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/executors/devin-cli.js": {
+    "complexity": {
+      "count": 4
+    }
+  },
+  "open-sse/executors/grok-cli.js": {
+    "complexity": {
+      "count": 4
+    }
+  },
+  "open-sse/executors/grok-web.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/executors/kiro.js": {
+    "complexity": {
+      "count": 4
+    }
+  },
+  "open-sse/executors/opencode-go.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/executors/opencode-zen.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/executors/opencode.js": {
+    "complexity": {
+      "count": 3
+    }
+  },
+  "open-sse/executors/perplexity-web.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/executors/qoder.js": {
+    "complexity": {
+      "count": 3
+    }
+  },
+  "open-sse/executors/vertex.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/handlers/chatCore.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/handlers/chatCore/nonStreamingHandler.js": {
+    "complexity": {
+      "count": 3
+    }
+  },
+  "open-sse/handlers/chatCore/requestDetail.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/handlers/chatCore/sseToJsonHandler.js": {
+    "complexity": {
+      "count": 3
+    }
+  },
+  "open-sse/handlers/chatCore/streamingHandler.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/handlers/embeddingsCore.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/handlers/fetch/index.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/handlers/imageGenerationCore.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/handlers/imageProviders/cloudflareAi.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/handlers/imageProviders/codex.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/handlers/search/chatSearch.js": {
+    "complexity": {
+      "count": 6
+    }
+  },
+  "open-sse/handlers/search/index.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/handlers/search/normalizers.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/handlers/sttCore.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/handlers/systemoneCore.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/handlers/ttsProviders/gemini.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/handlers/ttsProviders/minimax.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/handlers/ttsProviders/openrouter.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/handlers/ttsProviders/xiaomi-mimo.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/handlers/videoCore.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/rtk/filters/buildOutput.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/rtk/filters/gitDiff.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/rtk/filters/gitLog.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/rtk/filters/gitStatus.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/rtk/headroom.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/rtk/index.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/rtk/pxpipe.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/accountFallback.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/combo.js": {
+    "complexity": {
+      "count": 6
+    }
+  },
+  "open-sse/services/copilotModels.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/grokCliModels.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/services/kimchiModels.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/kiroModels.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/minimaxCodeUsage.js": {
+    "complexity": {
+      "count": 3
+    }
+  },
+  "open-sse/services/oauthCredentialManager.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/provider.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/qoderModels.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/thoughtSignatureStore.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/tokenRefresh/providers.js": {
+    "complexity": {
+      "count": 4
+    }
+  },
+  "open-sse/services/usage/antigravity-weekly.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/usage/claude.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/usage/codebuddy-cn.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/usage/commandcode.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/usage/cursor.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/usage/google.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/usage/grok-cli.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/usage/kimi.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/services/usage/kiro.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/usage/minimax.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/usage/misc.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/services/usage/opencode-go.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/usage/opencode-zen.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/usage/xiaomi-mimo.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/services/usage/zed.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/shared/mimoAccount.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/shared/qoder/attachments.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/shared/qoder/sse.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/transformer/responsesTransformer.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/transformer/streamToJsonConverter.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/translator/concerns/claudeMessage.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/translator/concerns/finishReason.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/translator/concerns/image.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/translator/concerns/kiroConversation.js": {
+    "complexity": {
+      "count": 3
+    }
+  },
+  "open-sse/translator/concerns/modality.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/translator/concerns/paramSupport.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/translator/concerns/prefetch.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/translator/concerns/thinkingUnified.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/translator/concerns/toolCall.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/translator/formats/claude.js": {
+    "complexity": {
+      "count": 4
+    }
+  },
+  "open-sse/translator/formats/gemini.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/translator/formats/responsesApi.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/translator/index.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/translator/request/antigravity-to-openai.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/translator/request/claude-to-kiro.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/translator/request/claude-to-openai.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/translator/request/openai-responses.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/translator/request/openai-to-claude.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/translator/request/openai-to-commandcode.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/translator/request/openai-to-cursor.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/translator/request/openai-to-gemini.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/translator/request/openai-to-kiro.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/translator/response/claude-to-openai.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/translator/response/commandcode-to-openai.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/translator/response/gemini-to-openai.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/translator/response/kiro-to-claude.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/translator/response/kiro-to-openai.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/translator/response/ollama-to-openai.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/translator/response/openai-responses.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/translator/response/openai-to-antigravity.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/translator/response/openai-to-claude.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/utils/awsEventStream.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/utils/bypassHandler.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/utils/clientDetector.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/utils/cursorProtobuf.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/utils/ollamaTransform.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/utils/proxyFetch.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/utils/sessionManager.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/utils/stream.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "open-sse/utils/streamHandler.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/utils/streamHelpers.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "open-sse/utils/usageTracking.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/app/(dashboard)/dashboard/basic-chat/BasicChatPageClient.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/app/(dashboard)/dashboard/cli-tools/[toolId]/ToolDetailClient.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/cli-tools/components/AntigravityToolCard.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/cli-tools/components/ApiKeySelect.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/cli-tools/components/ClaudeToolCard.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/cli-tools/components/ClineToolCard.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/cli-tools/components/CodexToolCard.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/cli-tools/components/CopilotToolCard.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/cli-tools/components/CoworkToolCard.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/app/(dashboard)/dashboard/cli-tools/components/DeepSeekTuiToolCard.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/cli-tools/components/DroidToolCard.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/cli-tools/components/GenericCliToolCard.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/app/(dashboard)/dashboard/cli-tools/components/GrokBuildToolCard.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/cli-tools/components/HermesToolCard.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/cli-tools/components/JcodeToolCard.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/cli-tools/components/KiloToolCard.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/cli-tools/components/MitmServerCard.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/cli-tools/components/MitmToolCard.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/cli-tools/components/OpenClawToolCard.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/cli-tools/components/OpenCodeToolCard.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/endpoint/EndpointPageClient.js": {
+    "complexity": {
+      "count": 3
+    }
+  },
+  "src/app/(dashboard)/dashboard/media-providers/[kind]/[id]/components/EmbeddingExampleCard.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/media-providers/[kind]/[id]/components/GenericExampleCard.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/app/(dashboard)/dashboard/media-providers/[kind]/[id]/components/SttExampleCard.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/app/(dashboard)/dashboard/media-providers/[kind]/[id]/components/TtsExampleCard.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/media-providers/[kind]/[id]/page.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/media-providers/combo/[id]/page.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/app/(dashboard)/dashboard/profile/page.js": {
+    "complexity": {
+      "count": 5
+    }
+  },
+  "src/app/(dashboard)/dashboard/providers/[id]/AddApiKeyModal.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/providers/[id]/AutoPingScheduleModal.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/providers/[id]/ConnectionRow.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/providers/[id]/page.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/app/(dashboard)/dashboard/providers/components/ConnectionsCard.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/providers/page.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/app/(dashboard)/dashboard/proxy-pools/page.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/pxpipe/PxpipeClient.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/token-saver/TokenSaverClient.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/usage/components/ProviderLimits/ProviderLimitCard.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/usage/components/ProviderLimits/QuotaTable.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/usage/components/ProviderLimits/index.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/app/(dashboard)/dashboard/usage/components/ProviderLimits/utils.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/(dashboard)/dashboard/usage/components/RequestDetailsTab.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/auth/login/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/auth/oidc/test/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/auth/status/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/cli-tools/cowork-mcp-registry/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/cli-tools/hermes-settings/route.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/app/api/cli-tools/opencode-settings/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/media-providers/tts/deepgram/voices/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/media-providers/tts/minimax/voices/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/models/test/ping.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/oauth/[provider]/[action]/route.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/app/api/oauth/codex/bulk-import/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/oauth/codex/import-token/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/oauth/grok-cli/bulk-import/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/oauth/kiro/auto-import/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/oauth/xiaomi-mimo/api-key/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/oauth/xiaomi-mimo/login/start/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/oauth/zed/import/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/provider-nodes/validate/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/providers/[id]/models/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/providers/[id]/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/providers/[id]/test/testUtils.js": {
+    "complexity": {
+      "count": 4
+    }
+  },
+  "src/app/api/providers/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/providers/test-batch/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/providers/validate/route.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/app/api/proxy-pools/netlify-deploy/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/settings/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/usage/[connectionId]/route.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/app/api/v1/models/route.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/app/api/v1beta/models/[...path]/route.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/app/login/page.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/dashboardGuard.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/i18n/config.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/lib/auth/saml.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/lib/db/index.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/lib/db/migrate.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/lib/db/repos/connectionsRepo.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/lib/db/repos/requestDetailsRepo.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/lib/db/repos/usageRepo.js": {
+    "complexity": {
+      "count": 3
+    }
+  },
+  "src/lib/mimoLoginSession.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/lib/modelCatalog/sync.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/lib/oauth/kiroExternalIdp.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/lib/oauth/providers/github.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/lib/oauth/providers/glm.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/lib/oauth/providers/grok-cli.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/lib/oauth/utils/zedCredentials.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/mitm/config.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/mitm/handlers/base.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/mitm/handlers/kiro.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/mitm/manager.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/shared/components/EditConnectionModal.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/shared/components/Header.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/shared/components/KiroAuthModal.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/shared/components/McpMarketplaceModal.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/shared/components/ModelSelectModal.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/shared/components/OAuthModal.js": {
+    "complexity": {
+      "count": 3
+    }
+  },
+  "src/shared/components/UsageStats.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/shared/components/ZedAuthModal.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/shared/constants/providers.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/shared/services/quotaAutoPing.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/shared/utils/providerCustomModels.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/sse/handlers/chat.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/sse/handlers/embeddings.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/sse/handlers/fetch.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/sse/handlers/imageGeneration.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/sse/handlers/search.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/sse/handlers/stt.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/sse/handlers/systemone.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/sse/handlers/tts.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/sse/handlers/videoGeneration.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/sse/services/antigravityQuota.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/sse/services/auth.js": {
+    "complexity": {
+      "count": 2
+    }
+  },
+  "src/sse/services/backgroundTokenRefresh.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "src/sse/services/tokenRefresh.js": {
+    "complexity": {
+      "count": 1
+    }
+  },
+  "tests/translator/real/antigravity-models.real.test.js": {
+    "complexity": {
+      "count": 1
+    }
+  }
+}

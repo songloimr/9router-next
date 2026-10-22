@@ -30,7 +30,7 @@ function context(raw, sourceFormat, targetFormat) {
 function responsesSSE(output) {
   const event = (type, data) => `event: ${type}\ndata: ${JSON.stringify(data)}\n\n`;
   return event("response.created", { response: { id: "resp_test", created_at: 1700000000 } })
-    + output.map((item, output_index) => event("response.output_item.done", { item, output_index })).join("")
+    + output.map((item, outputIndex) => event("response.output_item.done", { item, output_index: outputIndex })).join("")
     + event("response.completed", { response: { usage: { input_tokens: 12, output_tokens: 7, total_tokens: 19 } } });
 }
 

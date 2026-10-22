@@ -513,8 +513,8 @@ export function prepareClaudeRequest(body, provider = null, apiKey = null, conne
     if (effort === "xhigh" || effort === "max") body.output_config.effort = "high";
   }
   if (modelCaps.forcedToolChoice === false && (body.tool_choice?.type === "any" || body.tool_choice?.type === "tool")) {
-    const { disable_parallel_tool_use } = body.tool_choice;
-    body.tool_choice = { type: "auto", ...(disable_parallel_tool_use !== undefined ? { disable_parallel_tool_use } : {}) };
+    const { disable_parallel_tool_use: disableParallelToolUse } = body.tool_choice;
+    body.tool_choice = { type: "auto", ...(disableParallelToolUse !== undefined ? { disable_parallel_tool_use: disableParallelToolUse } : {}) };
   }
 
   // Clamp max_tokens to the model's real output ceiling. Models whose caps
