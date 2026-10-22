@@ -1,3 +1,12 @@
+# Unreleased
+
+## Removals
+- **Token saver**: remove the whole cluster — RTK compression engine (`open-sse/rtk/`), Headroom and PXPIPE integrations (`src/lib/headroom/`, `src/lib/pxpipe/`, `/api/headroom/*`, `/api/pxpipe/*`), the `/dashboard/token-saver` and `/dashboard/pxpipe` pages, the Caveman/Ponytail prompt injectors, the related settings keys, and the `X-9Router-Token-Saver` bypass header
+- **Skills**: remove the `skills/` directory (9 agent skill files + README), the `/dashboard/skills` page, and its constants/nav entry
+- **9Remote / 9English**: remove the sidebar promo links and the unused `NineRemoteButton` / `NineRemotePromoModal` components
+- **Amp CLI**: remove the Amp CLI entry from the CLI tools catalog and its provider image
+- **Donate**: remove the header Donate button and `DonateModal` component, the `donateUrl` config entry, and the unused `"Donate"` i18n keys
+
 # v0.5.104 (2026-10-15)
 
 ## Features
