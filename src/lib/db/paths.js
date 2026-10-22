@@ -11,6 +11,10 @@ export const LEGACY_FILES = {
   disabled: path.join(DATA_DIR, "disabledModels.json"),
   details: path.join(DATA_DIR, "request-details.json"),
 };
+/**
+ * Create the data, database, and backup directories when they are missing.
+ * @returns {void}
+ */
 export function ensureDirs() {
   for (const dir of [DATA_DIR, DB_DIR, BACKUPS_DIR]) {
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });

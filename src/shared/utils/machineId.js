@@ -8,11 +8,16 @@ const MACHINE_ID_FILE = path.join(DATA_DIR, 'machine-id');
 const AUTH_DIR = path.join(DATA_DIR, 'auth');
 const CLI_SECRET_FILE = path.join(AUTH_DIR, 'cli-secret');
 const CLI_AUTH_SALT = '9r-cli-auth';
+/** @type {string|null} */
 let cachedRawId = null;
+/** @type {string|null} */
 let cachedCliSecret = null;
 
 // Persist raw machine ID to file → guarantees CLI/server/middleware see same value
 // even when machineIdSync fails or returns inconsistent values across runtimes.
+/**
+ * @returns {string}
+ */
 function loadRawMachineId() {
   if (cachedRawId) return cachedRawId;
   try {
@@ -32,6 +37,9 @@ function loadRawMachineId() {
 }
 
 // Random secret persisted on first run → unpredictable CLI token even when machineId leaks.
+/**
+ * @returns {string}
+ */
 function loadCliSecret() {
   if (cachedCliSecret) return cachedCliSecret;
   try {
@@ -46,6 +54,10 @@ function loadCliSecret() {
   return cachedCliSecret;
 }
 
+/**
+ * @param {string|null} [salt]
+ * @returns {Promise<string>}
+ */
 export async function getConsistentMachineId(salt = null) {
   const saltValue = salt || process.env.MACHINE_ID_SALT || 'endpoint-proxy-salt';
   const raw = loadRawMachineId();
@@ -53,6 +65,9 @@ export async function getConsistentMachineId(salt = null) {
   return crypto.createHash('sha256').update(raw + saltValue + extra).digest('hex').substring(0, 16);
 }
 
+/**
+ * @returns {Promise<string>}
+ */
 export async function getRawMachineId() {
   return loadRawMachineId();
 }

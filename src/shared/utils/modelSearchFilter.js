@@ -104,7 +104,7 @@ export function parseSearchQuery(rawQuery) {
 
 /**
  * Check if a set of candidate strings matches the parsed query.
- * @param {string|string[]|object} target
+ * @param {string|string[]|Record<string, any>} target
  * @param {ReturnType<typeof parseSearchQuery>|string} queryOrParsed
  * @returns {boolean}
  */
@@ -139,12 +139,13 @@ export function matchesSearch(target, queryOrParsed) {
 
   // Handle Regex
   if (parsed.isRegex && parsed.regex) {
+    const regex = parsed.regex;
     const fullText = candidates.join(" ");
     const hasNegativeAssertion = /\(\?!|\(\?<!/.test(parsed.raw);
     if (hasNegativeAssertion) {
-      return parsed.regex.test(fullText);
+      return regex.test(fullText);
     }
-    return candidates.some((text) => parsed.regex.test(text)) || parsed.regex.test(fullText);
+    return candidates.some((text) => regex.test(text)) || regex.test(fullText);
   }
 
   const lowerCandidates = candidates.map((c) => c.toLowerCase());
@@ -172,9 +173,9 @@ export function matchesSearch(target, queryOrParsed) {
 
 /**
  * Filter an array of model or combo objects by a search query.
- * @param {Array} items
+ * @param {any[]} items
  * @param {string|ReturnType<typeof parseSearchQuery>} query
- * @returns {Array}
+ * @returns {any[]}
  */
 export function filterModelsByQuery(items, query) {
   if (!Array.isArray(items) || items.length === 0) return [];

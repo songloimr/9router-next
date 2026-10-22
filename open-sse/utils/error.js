@@ -25,6 +25,7 @@ export function buildErrorBody(statusCode, message) {
  * Create error Response object (for non-streaming)
  * @param {number} statusCode - HTTP status code
  * @param {string} message - Error message
+ * @param {Record<string, string>|null} [extraHeaders] - Additional response headers
  * @returns {Response} HTTP Response object
  */
 export function errorResponse(statusCode, message, extraHeaders = null) {
@@ -33,14 +34,14 @@ export function errorResponse(statusCode, message, extraHeaders = null) {
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
-      ...extraHeaders
+      ...(extraHeaders || {})
     }
   });
 }
 
 /**
  * Write error to SSE stream (for streaming)
- * @param {WritableStreamDefaultWriter} writer - Stream writer
+ * @param {WritableStreamDefaultWriter<Uint8Array>} writer - Stream writer
  * @param {number} statusCode - HTTP status code
  * @param {string} message - Error message
  */
@@ -51,9 +52,14 @@ export async function writeStreamError(writer, statusCode, message) {
 }
 
 /**
+ * @typedef {Object} ExecutorErrorParser
+ * @property {(response: Response, bodyText: string) => ({ status?: number, message?: string, resetsAtMs?: number }|null|undefined)} [parseError]
+ */
+
+/**
  * Parse upstream provider error response
  * @param {Response} response - Fetch response from provider
- * @param {object} [executor] - Optional executor with parseError() override for provider-specific parsing
+ * @param {ExecutorErrorParser|null} [executor] - Optional executor with parseError() override for provider-specific parsing
  * @returns {Promise<{statusCode: number, message: string, resetsAtMs?: number}>}
  */
 export async function parseUpstreamError(response, executor = null) {
@@ -94,6 +100,7 @@ export async function parseUpstreamError(response, executor = null) {
  * @param {number} statusCode - HTTP status code
  * @param {string} message - Error message
  * @param {number} [resetsAtMs] - Optional precise cooldown expiry (ms epoch) for provider-specific quota errors
+ * @param {Record<string, string>|null} [extraHeaders] - Additional response headers
  * @returns {{ success: false, status: number, error: string, response: Response, resetsAtMs?: number }}
  */
 export function createErrorResult(statusCode, message, resetsAtMs, extraHeaders = null) {
@@ -112,6 +119,7 @@ export function createErrorResult(statusCode, message, resetsAtMs, extraHeaders 
  * @param {string} message - Error message (without retry info)
  * @param {string} retryAfter - ISO timestamp when earliest account becomes available
  * @param {string} retryAfterHuman - Human-readable retry info e.g. "reset after 30s"
+ * @param {Record<string, string>|null} [extraHeaders] - Additional response headers
  * @returns {Response}
  */
 export function unavailableResponse(statusCode, message, retryAfter, retryAfterHuman, extraHeaders = null) {
@@ -122,7 +130,7 @@ export function unavailableResponse(statusCode, message, retryAfter, retryAfterH
     {
       status: statusCode,
       headers: {
-        ...extraHeaders,
+        ...(extraHeaders || {}),
         "Content-Type": "application/json",
         // Intentionally mis-cased to prevent duplicate headers
         "retry-after": String(retryAfterSec)
@@ -132,8 +140,15 @@ export function unavailableResponse(statusCode, message, retryAfter, retryAfterH
 }
 
 /**
+ * @typedef {Object} ProviderError
+ * @property {string} message
+ * @property {string|number} [code]
+ * @property {{ code?: string, message?: string }} [cause]
+ */
+
+/**
  * Format provider error with context
- * @param {Error} error - Original error
+ * @param {ProviderError} error - Original error
  * @param {string} provider - Provider name
  * @param {string} model - Model name
  * @param {number|string} statusCode - HTTP status code or error code

@@ -1,3 +1,8 @@
+/**
+ * @param {boolean|undefined} isActive
+ * @param {string|undefined} effectiveStatus
+ * @returns {"default"|"success"|"error"}
+ */
 export function getStatusVariant(isActive, effectiveStatus) {
   if (isActive === false) return "default";
   if (effectiveStatus === "active" || effectiveStatus === "success") return "success";
@@ -12,6 +17,7 @@ export function getStatusVariant(isActive, effectiveStatus) {
  * @returns {Set<string>} Set of deactivated provider IDs
  */
 export function getDeactivatedProviderIds(connections) {
+  /** @type {Record<string, { total: number, active: number }>} */
   const byProvider = {};
   for (const c of connections || []) {
     if (!c?.provider) continue;

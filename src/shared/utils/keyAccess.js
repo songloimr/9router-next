@@ -9,6 +9,8 @@ import {
 /**
  * Normalize an allow list: keep strings only, trim, drop empties, de-duplicate
  * case-insensitively (the first spelling wins). Order is preserved.
+ * @param {unknown} list
+ * @returns {string[]}
  */
 export function normalizeAllowList(list) {
   if (!Array.isArray(list)) return [];
@@ -32,6 +34,9 @@ export function normalizeAllowList(list) {
  * Fails CLOSED: the restricted flag has its own INTEGER column, so a corrupt or
  * unparsable allow list can only ever shrink what a restricted key may call
  * (to nothing); it can never turn a restricted key into an unrestricted one.
+ * @param {unknown} restrictedCol
+ * @param {unknown} allowCol
+ * @returns {{ restricted: boolean, allow: string[] }}
  */
 export function keyAccessFromColumns(restrictedCol, allowCol) {
   const restricted = restrictedCol === 1 || restrictedCol === true;
@@ -43,7 +48,10 @@ export function keyAccessFromColumns(restrictedCol, allowCol) {
   return { restricted: true, allow: normalizeAllowList(parsed) };
 }
 
-/** Columns to persist for an access object (already validated/normalized). */
+/** Columns to persist for an access object (already validated/normalized).
+ * @param {{ restricted?: boolean, allow?: unknown }|null|undefined} access
+ * @returns {{ accessRestricted: number, accessAllow: string }}
+ */
 export function keyAccessToColumns(access) {
   const value = access || KEY_ACCESS_UNRESTRICTED;
   return {
@@ -55,18 +63,20 @@ export function keyAccessToColumns(access) {
 /**
  * Validate client input for an access update ({ restricted, allow }).
  * Rejects rather than repairs: wrong types, too many entries, overlong entries.
+ * @param {unknown} input
  * @returns {{ ok: true, value: {restricted: boolean, allow: string[]} } | { ok: false, error: string }}
  */
 export function validateKeyAccessInput(input) {
   if (!input || typeof input !== "object" || Array.isArray(input)) {
     return { ok: false, error: "access must be an object { restricted, allow }" };
   }
-  const extra = Object.keys(input).filter((k) => k !== "restricted" && k !== "allow");
+  const candidate = /** @type {{ restricted?: unknown, allow?: unknown }} */ (input);
+  const extra = Object.keys(candidate).filter((k) => k !== "restricted" && k !== "allow");
   if (extra.length) return { ok: false, error: `access: unexpected field(s) ${extra.join(", ")}` };
-  if (typeof input.restricted !== "boolean") {
+  if (typeof candidate.restricted !== "boolean") {
     return { ok: false, error: "access.restricted must be a boolean" };
   }
-  const allow = input.allow === undefined ? [] : input.allow;
+  const allow = candidate.allow === undefined ? [] : candidate.allow;
   if (!Array.isArray(allow) || allow.some((e) => typeof e !== "string")) {
     return { ok: false, error: "access.allow must be an array of strings" };
   }
@@ -76,5 +86,5 @@ export function validateKeyAccessInput(input) {
   if (allow.some((e) => e.trim().length > KEY_ACCESS_MAX_ENTRY_LENGTH)) {
     return { ok: false, error: `access.allow entries must be at most ${KEY_ACCESS_MAX_ENTRY_LENGTH} characters` };
   }
-  return { ok: true, value: { restricted: input.restricted, allow: normalizeAllowList(allow) } };
+  return { ok: true, value: { restricted: candidate.restricted, allow: normalizeAllowList(allow) } };
 }

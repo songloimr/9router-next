@@ -24,6 +24,10 @@ const BLOCKED_HOSTNAMES = new Set(["localhost", "ip6-localhost", "ip6-loopback"]
 const BLOCKED_SUFFIXES = [".internal", ".local", ".localhost"];
 
 // Parse dotted IPv4 to 32-bit integer, or null if not a valid IPv4 literal.
+/**
+ * @param {string} host
+ * @returns {number|null}
+ */
 function ipv4ToInt(host) {
   const parts = host.split(".");
   if (parts.length !== 4) return null;
@@ -38,6 +42,7 @@ function ipv4ToInt(host) {
 }
 
 // Private/reserved IPv4 ranges as [startInt, maskBits].
+/** @type {Array<[number|null, number]>} */
 const BLOCKED_V4_RANGES = [
   [ipv4ToInt("0.0.0.0"), 8],
   [ipv4ToInt("10.0.0.0"), 8],
@@ -48,19 +53,32 @@ const BLOCKED_V4_RANGES = [
   [ipv4ToInt("192.168.0.0"), 16],
 ];
 
+/**
+ * @param {number} ip
+ * @returns {boolean}
+ */
 function isBlockedIpv4Int(ip) {
   return BLOCKED_V4_RANGES.some(([base, bits]) => {
+    if (base === null) return false;
     const mask = bits === 0 ? 0 : (0xffffffff << (32 - bits)) >>> 0;
     return (ip & mask) === (base & mask);
   });
 }
 
+/**
+ * @param {string} host
+ * @returns {boolean}
+ */
 function isBlockedIpv4(host) {
   const ip = ipv4ToInt(host);
   if (ip === null) return false;
   return isBlockedIpv4Int(ip);
 }
 
+/**
+ * @param {string} s
+ * @returns {number[]|null}
+ */
 function parseHextets(s) {
   if (s === "") return [];
   const segs = s.split(":");
@@ -78,6 +96,10 @@ function parseHextets(s) {
 // and reasoning about the numeric value — rather than pattern-matching the source
 // string — is what makes this immune to "which textual form did the URL parser
 // pick" bugs: "::ffff:127.0.0.1" and "::ffff:7f00:1" produce identical groups.
+/**
+ * @param {string} rawHost
+ * @returns {number[]|null}
+ */
 function parseIPv6ToGroups(rawHost) {
   let host = rawHost.toLowerCase();
 
@@ -116,7 +138,12 @@ function parseIPv6ToGroups(rawHost) {
   return groups.length === 8 ? groups : null;
 }
 
+/**
+ * @param {number[]} g
+ * @returns {boolean}
+ */
 function isBlockedIpv6Groups(g) {
+  /** @param {number} n */
   const isZero = (n) => g[n] === 0;
   // loopback ::1
   if ([0, 1, 2, 3, 4, 5, 6].every(isZero) && g[7] === 1) return true;
@@ -139,6 +166,10 @@ function isBlockedIpv6Groups(g) {
   return false;
 }
 
+/**
+ * @param {string} hostname
+ * @returns {string}
+ */
 function normalizeHost(hostname) {
   // A trailing dot marks an FQDN and is semantically insignificant
   // ("localhost." and "localhost" are the same host) but was being compared
@@ -146,6 +177,10 @@ function normalizeHost(hostname) {
   return hostname.toLowerCase().replace(/\.+$/, "");
 }
 
+/**
+ * @param {string} host
+ * @returns {boolean}
+ */
 function isBlockedHost(host) {
   if (BLOCKED_HOSTNAMES.has(host)) return true;
   if (BLOCKED_SUFFIXES.some((s) => host.endsWith(s))) return true;
@@ -159,6 +194,10 @@ function isBlockedHost(host) {
 
 // Throw if URL targets a non-public host by literal hostname/IP alone (no DNS
 // resolution — see assertPublicUrlResolved for that). Caller should map to 400.
+/**
+ * @param {string} rawUrl
+ * @returns {void}
+ */
 export function assertPublicUrl(rawUrl) {
   const parsed = new URL(rawUrl);
   const host = normalizeHost(parsed.hostname);
@@ -169,6 +208,10 @@ export function assertPublicUrl(rawUrl) {
 // domain that merely *resolves* to a private/loopback/metadata address (wildcard-DNS
 // services like nip.io/sslip.io, or an attacker-controlled domain with an A record
 // pointed at 127.0.0.1) is rejected too, not just IPs typed directly into the URL.
+/**
+ * @param {string} rawUrl
+ * @returns {Promise<void>}
+ */
 export async function assertPublicUrlResolved(rawUrl) {
   const parsed = new URL(rawUrl);
   const host = normalizeHost(parsed.hostname);
@@ -199,6 +242,12 @@ export async function assertPublicUrlResolved(rawUrl) {
 // validated public URL can't 30x its way to an internal target. Bounded to
 // maxRedirects hops (fetch's own default following behavior has no bound
 // relevant here since we never let it auto-follow).
+/**
+ * @param {string} url
+ * @param {RequestInit} [init]
+ * @param {{ maxRedirects?: number }} [options]
+ * @returns {Promise<Response>}
+ */
 export async function fetchPublic(url, init = {}, { maxRedirects = 5 } = {}) {
   await assertPublicUrlResolved(url);
   let currentUrl = url;

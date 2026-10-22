@@ -11,6 +11,10 @@
 const CONTEXT_MARKER = /\[1m\]$/i;
 
 // Returns { model, contextMarker } — contextMarker is null when there is none.
+/**
+ * @param {unknown} modelStr
+ * @returns {{ model: unknown, contextMarker: string|null }}
+ */
 export function stripModelContextMarker(modelStr) {
   if (typeof modelStr !== "string") return { model: modelStr, contextMarker: null };
   const trimmed = modelStr.trim();

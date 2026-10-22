@@ -1,0 +1,74 @@
+{
+  // 9Router is plain JavaScript, so static checking is opt-in and grows one
+  // module at a time. `checkJs` + `strict` check every file in `include` and
+  // everything they import. Add a module here only after it type-checks.
+  "compilerOptions": {
+    "target": "ES2023",
+    "lib": [
+      "ES2023",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowJs": true,
+    "checkJs": true,
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "node"
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "open-sse": [
+        "./open-sse"
+      ],
+      "open-sse/*": [
+        "./open-sse/*"
+      ]
+    },
+    "incremental": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "src/lib/dataDir.js",
+    "src/lib/db/paths.js",
+    "src/lib/oauth/utils/pkce.js",
+    "src/shared/constants/keyAccess.js",
+    "src/shared/utils/apiKey.js",
+    "src/shared/utils/connectionStatus.js",
+    "src/shared/utils/keyAccess.js",
+    "src/shared/utils/machineId.js",
+    "src/shared/utils/modelSearchFilter.js",
+    "src/shared/utils/ssrfGuard.js",
+    "open-sse/config/errorConfig.js",
+    "open-sse/utils/clientDetector.js",
+    "open-sse/utils/error.js",
+    "open-sse/utils/modelMarkers.js",
+    "open-sse/utils/sse.js",
+    "open-sse/utils/sseConstants.js",
+    "cli/src/cli/utils/comboModelId.js",
+    "cli/src/cli/utils/format.js",
+    "types/**/*.d.ts",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next",
+    "out",
+    "build"
+  ]
+}

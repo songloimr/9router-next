@@ -4,6 +4,7 @@ const API_KEY_SECRET = process.env.API_KEY_SECRET || "endpoint-proxy-api-key-sec
 
 /**
  * Generate 6-char random keyId
+ * @returns {string}
  */
 function generateKeyId() {
   const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
@@ -16,6 +17,9 @@ function generateKeyId() {
 
 /**
  * Generate CRC (8-char HMAC)
+ * @param {string} machineId
+ * @param {string} keyId
+ * @returns {string}
  */
 function generateCrc(machineId, keyId) {
   return crypto
@@ -43,8 +47,8 @@ export function generateApiKeyWithMachine(machineId) {
  * Supports both formats:
  * - New: sk-{machineId}-{keyId}-{crc8}
  * - Old: sk-{random8}
- * @param {string} apiKey
- * @returns {{ machineId: string, keyId: string, isNewFormat: boolean } | null}
+ * @param {string|null|undefined} apiKey
+ * @returns {{ machineId: string|null, keyId: string, isNewFormat: boolean } | null}
  */
 export function parseApiKey(apiKey) {
   if (!apiKey || !apiKey.startsWith("sk-")) return null;
@@ -72,7 +76,7 @@ export function parseApiKey(apiKey) {
 
 /**
  * Verify API key CRC (only for new format)
- * @param {string} apiKey
+ * @param {string|null|undefined} apiKey
  * @returns {boolean}
  */
 export function verifyApiKeyCrc(apiKey) {
@@ -88,7 +92,7 @@ export function verifyApiKeyCrc(apiKey) {
 
 /**
  * Check if API key is new format (contains machineId)
- * @param {string} apiKey
+ * @param {string|null|undefined} apiKey
  * @returns {boolean}
  */
 export function isNewFormatKey(apiKey) {

@@ -4,6 +4,7 @@
  */
 
 // Map of CLI tool identifiers to provider IDs they are "native" to
+/** @type {Record<string, string[]>} */
 const NATIVE_PAIRS = {
   "claude": ["claude", "anthropic"],
   "gemini-cli": ["gemini-cli"],
@@ -13,9 +14,9 @@ const NATIVE_PAIRS = {
 
 /**
  * Detect which CLI tool is making the request.
- * Returns one of: "claude" | "gemini-cli" | "antigravity" | "codex" | null
- * @param {object} headers - Lowercase header key/value object
- * @param {object} body    - Parsed request body
+ * @param {Record<string, any>} [headers] - Lowercase header key/value object
+ * @param {Record<string, any>} [body]    - Parsed request body
+ * @returns {"claude" | "gemini-cli" | "antigravity" | "codex" | "github-copilot" | "deepseek-tui" | null}
  */
 export function detectClientTool(headers = {}, body = {}) {
   const ua = (headers["user-agent"] || "").toLowerCase();
@@ -53,6 +54,7 @@ export function detectClientTool(headers = {}, body = {}) {
  * Check if this CLI tool + provider pair should be passed through losslessly.
  * @param {string|null} clientTool - Result of detectClientTool()
  * @param {string} provider        - Provider ID (e.g. "claude", "gemini-cli")
+ * @returns {boolean}
  */
 export function isNativePassthrough(clientTool, provider) {
   if (!clientTool) return false;

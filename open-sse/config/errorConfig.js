@@ -1,4 +1,5 @@
 // OpenAI-compatible error types mapping (client-facing)
+/** @type {Record<number, { type: string, code: string }>} */
 export const ERROR_TYPES = {
   400: { type: "invalid_request_error", code: "bad_request" },
   401: { type: "authentication_error", code: "invalid_api_key" },
@@ -14,6 +15,7 @@ export const ERROR_TYPES = {
 };
 
 // Default error messages per status code (client-facing)
+/** @type {Record<number, string>} */
 export const DEFAULT_ERROR_MESSAGES = {
   400: "Bad request",
   401: "Invalid API key provided",
@@ -48,14 +50,19 @@ const COOLDOWN = {
 };
 
 /**
+ * @typedef {Object} ErrorRule
+ * @property {string} [provider] - Provider id this rule applies to
+ * @property {string} [text] - Case-insensitive substring match on the error message
+ * @property {number} [status] - HTTP status code match
+ * @property {number} [cooldownMs] - Fixed cooldown duration
+ * @property {boolean} [backoff] - Use exponential backoff (rate limit)
+ */
+
+/**
  * Unified error classification rules.
  * Checked top-to-bottom: text rules first (by order), then status rules.
- * Each rule: { text?, status?, cooldownMs?, backoff? }
- *   - text: substring match (case-insensitive) on error message
- *   - status: HTTP status code match
- *   - cooldownMs: fixed cooldown duration
- *   - backoff: true = use exponential backoff (rate limit)
  */
+/** @type {ErrorRule[]} */
 export const ERROR_RULES = [
   // --- Text-based rules (checked first, order = priority) ---
   { provider: "codex", text: "model is not supported when using codex with a chatgpt account", cooldownMs: MAX_RATE_LIMIT_COOLDOWN_MS },

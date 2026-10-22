@@ -24,6 +24,7 @@ npm run build && PORT=20128 HOSTNAME=0.0.0.0 npm run start           # productio
 - Bun variants: `npm run dev:bun` / `build:bun` / `start:bun`.
 - Default runtime port is **20128** (dashboard at `/dashboard`, API at `/v1`).
 - Lint: `npx eslint .` (config `eslint.config.mjs`, extends `eslint-config-next`). Naming-only check: `npm run lint:naming`. Complexity-only check (max 20 branches, legacy debt baselined in `eslint-suppressions.json`): `npm run lint:complexity`.
+- Type check: `npm run typecheck` (`tsc -p tsconfig.json`, `checkJs` + `strict`). The project is plain JavaScript, so checking is scoped to the modules listed under `include` in `tsconfig.json`; after annotating a module and making it pass, add it to that list.
 
 CLI package (`cli/`):
 ```bash
